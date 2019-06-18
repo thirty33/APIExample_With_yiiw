@@ -20,7 +20,7 @@ class EventController extends \yii\web\Controller
         if($event->validate()) {
 
             $event->save();
-            return array('status' => true, 'data' => 'event record is successfully updated');
+            return array('status' => true, 'data' => 'event record is successfully created');
         }
         else {
             return array('status' => false, 'data' => $event->getErrors());
@@ -62,4 +62,6 @@ class EventController extends \yii\web\Controller
         }
         return array('status' => false, 'data' => 'event not found');
     }
+
+    
 }
