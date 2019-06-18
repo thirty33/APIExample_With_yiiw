@@ -35,7 +35,8 @@ class EventController extends \yii\web\Controller
         }
     }
 
-    public function actionGetEvents() {
+    public function actionGetEvents()
+    {
         \Yii::$app->response->format = \yii\web\Response:: FORMAT_JSON;
         $events = Event::find()->all();
         if(count($events) > 0) {
@@ -46,10 +47,10 @@ class EventController extends \yii\web\Controller
         }
     }
 
-    public function actionUpdateEvent() {
+    public function actionUpdateEvent($id) {
         \Yii::$app->response->format = \yii\web\Response:: FORMAT_JSON;
         $attributes = \yii::$app->request->post();
-        $event = Event::find()->where(['event_id' => $attributes['id']])
+        $event = Event::find()->where(['event_id' => $id])
             ->one();
         if(count($event) > 0) {
             $event->attributes = \yii::$app->request->post();
@@ -59,10 +60,11 @@ class EventController extends \yii\web\Controller
         return array('status' => false, 'data' => 'event record unsuccesfully');
     }
 
-    public function actionDeleteEvent() {
+    public function actionDeleteEvent($id) {
         \Yii::$app->response->format = \yii\web\Response:: FORMAT_JSON;
         $attributes = \yii::$app->request->post();
-        $event = Event::find()->where(['event_id' => $attributes['id']])
+        // $event = Event::find()->where(['event_id' => $attributes['id']])
+        $event = Event::find()->where(['event_id' => $id])
             ->one();
         if(count($event) > 0) {
             $event->delete();

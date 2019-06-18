@@ -55,8 +55,8 @@ $config = [
             'rules' => [
                 'event/get-events' => 'event/get-events',
                 'event/create-event' => 'event/create-event',
-                'event/update-event' => 'event/update-event',
-                'event/delete-event' => 'event/delete-event',
+                'event/update-event/<id:\d+>' => 'event/update-event',
+                'event/delete-event/<id:\d+>' => 'event/delete-event',
             ],
         ],
         
