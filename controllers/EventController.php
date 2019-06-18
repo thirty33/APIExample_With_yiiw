@@ -8,7 +8,15 @@ class EventController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        // return $this->render('index');
+        \Yii::$app->response->format = \yii\web\Response:: FORMAT_JSON;
+        $events = Event::find()->all();
+        if(count($events) > 0) {
+            return array('status' => true, 'data' => $events);
+        }
+        else {
+            return array('status' => false, 'data' => 'no events found');
+        }
     }
 
     public function actionCreateEvent() {
@@ -62,6 +70,4 @@ class EventController extends \yii\web\Controller
         }
         return array('status' => false, 'data' => 'event not found');
     }
-
-    
 }

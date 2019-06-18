@@ -47,14 +47,18 @@ $config = [
             ],
         ],
         'db' => $db,
-        // 'urlManager' => [
-        //     'enablePrettyUrl' => true,
-        //     'enableStrictParsing' => true,
-        //     'showScriptName' => false,
-        //     'rules' => [
-        //         ['class' => 'yii\rest\UrlRule', 'controller' => 'event']
-        //     ],
-        // ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'enableStrictParsing' => false,
+            'rules' => [
+                'event/get-events' => 'event/get-events',
+                'event/create-event' => 'event/create-event',
+                'event/update-event' => 'event/update-event',
+                'event/delete-event' => 'event/delete-event',
+            ],
+        ],
         
     ],
     'params' => $params,
